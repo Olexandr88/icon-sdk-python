@@ -113,7 +113,7 @@ class BlockMonitorSpec(MonitorSpec):
             params["height"] = self.__height
         if self.__logs:
             params["logs"] = True
-        if len(self.__filters) == 1:
+        if self.__filters is not None and len(self.__filters) == 1:
             self.__filters[0].apply_to(params)
         else:
             params["eventFilters"] = list(map(lambda a: a.as_dict(), self.__filters))
